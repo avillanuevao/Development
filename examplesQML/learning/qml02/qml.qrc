@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>HomeForm.ui.qml</file>
+        <file>dataContainer.txt</file>
+        <file>main04.qml</file>
+        <file>jsLogic04.js</file>
+        <file>main05.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>image01.jpeg</file>
+    </qresource>
+</RCC>
