@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>button.qml</file>
+        <file>comboBox.qml</file>
+        <file>rectangle.qml</file>
+    </qresource>
+</RCC>
