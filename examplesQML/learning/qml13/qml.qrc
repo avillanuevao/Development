@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>rowLayout.qml</file>
+        <file>button.qml</file>
+        <file>popup.qml</file>
+    </qresource>
+</RCC>
