@@ -29,7 +29,6 @@ namespace view
             void setFundType(int fundType);
             void depositMoney();
 
-
         private:
             QQmlApplicationEngine& m_engine;
             viewModel::DepositViewModel& m_depositViewModel;
