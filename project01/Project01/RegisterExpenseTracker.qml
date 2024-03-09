@@ -21,7 +21,7 @@ ColumnLayout
 
         onClicked:
         {
-
+            viewRegisterExpenseTracker.registerExpenseTracker(expenseTrackerNameTextField.text);
         }
     }
 }

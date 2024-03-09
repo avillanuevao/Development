@@ -15,6 +15,10 @@ void AllExpensesTrackers::registerExpenseTracker(int idExpenseTracker, std::stri
   std::shared_ptr<model::operation::iExpenseTracker> newExpenseTracker =
       std::make_shared<model::operation::ExpenseTracker>(idExpenseTracker, nameExpenseTracker);
   mAllExpenses[idExpenseTracker] = newExpenseTracker;
+
+  model::operation::signal::AddExpenseTracker signal(idExpenseTracker, nameExpenseTracker);
+  utils::designPattern::SignalPublisher<model::operation::signal::AddExpenseTracker> publisher;
+  publisher.notifySubscribers(signal);
 }
 
 std::shared_ptr<iExpenseTracker> AllExpensesTrackers::getExpenseTrackerById(int idExpenseTracker)

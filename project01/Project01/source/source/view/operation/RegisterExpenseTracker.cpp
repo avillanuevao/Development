@@ -13,9 +13,10 @@ RegisterExpenseTracker::RegisterExpenseTracker(std::shared_ptr<source::controlle
 
 }
 
-void RegisterExpenseTracker::registerExpenseTracker(int idExpense, std::string nameExpense)
+void RegisterExpenseTracker::registerExpenseTracker(QString nameExpense)
 {
-  mController->registerExpenseTracker(idExpense, nameExpense);
+  int idExpense = ++mLastIdExpenseTracker;
+  mController->registerExpenseTracker(idExpense, nameExpense.toStdString());
 }
 
 }  // namespace operation

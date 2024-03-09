@@ -4,5 +4,7 @@
         <file>RegisterUser.qml</file>
         <file>RegisterExpenseTracker.qml</file>
         <file>AddExpense.qml</file>
+        <file>AddUserToExpense.qml</file>
+        <file>AddSelector.qml</file>
     </qresource>
 </RCC>

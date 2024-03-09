@@ -21,8 +21,7 @@ ColumnLayout
 
         onClicked:
         {
-            var randomNumber = Math.floor(Math.random() * 100) + 1;
-            viewRegisterUser.registerUser(randomNumber, userNameTextField.text);
+            viewRegisterUser.registerUser(userNameTextField.text);
         }
     }
 }

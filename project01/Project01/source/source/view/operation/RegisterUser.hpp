@@ -27,10 +27,11 @@ class RegisterUser :
     RegisterUser(std::shared_ptr<source::controller::operation::RegisterUser> controller);
 
   public slots:
-    void registerUser(int idUser, QString nameUser);
+    void registerUser(QString nameUser);
 
   private:
     std::shared_ptr<source::controller::operation::RegisterUser> mController;
+    int mLastIdUser = 0;
 };
 
 }  // namespace operation

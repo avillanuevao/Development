@@ -6,8 +6,13 @@
 #include <QQmlContext>
 
 #include <model/source/operation/AllUsers.hpp>
+#include <model/source/operation/AllExpensesTrackers.hpp>
 #include <source/source/controller/operation/RegisterUser.hpp>
 #include <source/source/view/operation/RegisterUser.hpp>
+#include <source/source/controller/operation/RegisterExpenseTracker.hpp>
+#include <source/source/view/operation/RegisterExpenseTracker.hpp>
+
+
 
 int main(int argc, char *argv[])
 {
@@ -15,14 +20,21 @@ int main(int argc, char *argv[])
   QQmlApplicationEngine engine;
 
   std::shared_ptr<model::operation::AllUsers> allUsersPtr = std::make_shared<model::operation::AllUsers>();
+  std::shared_ptr<model::operation::AllExpensesTrackers> allExpensesTrackersPtr = std::make_shared<model::operation::AllExpensesTrackers>();
+
 
   std::shared_ptr<source::controller::operation::RegisterUser> controllerRegisterUser =
       std::make_shared<source::controller::operation::RegisterUser>(allUsersPtr);
+  std::shared_ptr<source::controller::operation::RegisterExpenseTracker> controllerRegisterExpenseTracker =
+      std::make_shared<source::controller::operation::RegisterExpenseTracker>(allExpensesTrackersPtr);
 
   std::shared_ptr<source::view::operation::RegisterUser> viewRegisterUser =
       std::make_shared<source::view::operation::RegisterUser>(controllerRegisterUser);
+  std::shared_ptr<source::view::operation::RegisterExpenseTracker> viewRegisterExpenseTracker =
+      std::make_shared<source::view::operation::RegisterExpenseTracker>(controllerRegisterExpenseTracker);
 
   engine.rootContext()->setContextProperty("viewRegisterUser", viewRegisterUser.get());
+  engine.rootContext()->setContextProperty("viewRegisterExpenseTracker", viewRegisterExpenseTracker.get());
 
   const QUrl url(QStringLiteral("qrc:/main.qml"));
   engine.load(url);

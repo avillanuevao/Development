@@ -5,13 +5,16 @@
 #include <string>
 
 #include <operation/iExpenseTracker.hpp>
+#include <designPattern/SignalPublisher.hpp>
+#include <operation/signal/AddExpenseTracker.hpp>
 
 namespace model
 {
 namespace operation
 {
 
-class iAllExpensesTrackers
+class iAllExpensesTrackers :
+    public utils::designPattern::SignalPublisher<model::operation::signal::AddExpenseTracker>
 {
   public:
     iAllExpensesTrackers() = default;

@@ -12,11 +12,6 @@ ColumnLayout
 
         ComboBox
         {
-            id: selectExpenseTrackerComboBox
-        }
-
-        ComboBox
-        {
             id: selectUserComboBox
         }
     }

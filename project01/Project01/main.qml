@@ -9,6 +9,11 @@ Window {
     visible: true
     title: qsTr("Expense Tracker")
 
+    ListModel
+    {
+        id: userDataModel
+    }
+
     ColumnLayout
     {
         RowLayout
@@ -21,7 +26,7 @@ Window {
                 {
                     registerUser.visible = true;
                     registerExpenseTracker.visible = false;
-                    addExpense.visible = false;
+                    addSelector.visible = false;
                 }
             }
             RadioButton
@@ -32,7 +37,7 @@ Window {
                 {
                     registerUser.visible = false;
                     registerExpenseTracker.visible = true;
-                    addExpense.visible = false;
+                    addSelector.visible = false;
                 }
             }
             RadioButton
@@ -43,7 +48,7 @@ Window {
                 {
                     registerUser.visible = false;
                     registerExpenseTracker.visible = false;
-                    addExpense.visible = true;
+                    addSelector.visible = true;
                 }
             }
         }
@@ -60,9 +65,9 @@ Window {
             visible: false
         }
 
-        AddExpense
+        AddSelector
         {
-            id: addExpense
+            id: addSelector
             visible: false
         }
     }

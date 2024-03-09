@@ -13,7 +13,7 @@ namespace operation
 class RegisterExpenseTracker
 {
   public:
-    RegisterExpenseTracker();
+    RegisterExpenseTracker(std::shared_ptr<model::operation::iAllExpensesTrackers> allExpenses);
 
     void registerExpenseTracker(int idExpense, std::string nameExpense);
 

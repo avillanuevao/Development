@@ -24,11 +24,11 @@ class RegisterExpenseTracker :
     RegisterExpenseTracker(std::shared_ptr<source::controller::operation::RegisterExpenseTracker> controller);
 
   public slots:
-    void registerExpenseTracker(int idExpense, std::string nameExpense);
+    void registerExpenseTracker(QString nameExpense);
 
   private:
     std::shared_ptr<source::controller::operation::RegisterExpenseTracker> mController;
-
+    int mLastIdExpenseTracker = 0;
 };
 
 }  // namespace operation

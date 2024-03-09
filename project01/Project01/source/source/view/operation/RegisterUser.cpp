@@ -13,12 +13,11 @@ RegisterUser::RegisterUser(std::shared_ptr<controller::operation::RegisterUser> 
 
 }
 
-void RegisterUser::registerUser(int idUser, QString nameUser)
+void RegisterUser::registerUser(QString nameUser)
 {
+  int idUser = ++mLastIdUser;
   mController->registerUser(idUser, nameUser.toStdString());
 }
-
-
 
 }  // namespace operation
 }  // namespace view
