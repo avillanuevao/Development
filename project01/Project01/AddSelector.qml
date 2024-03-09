@@ -6,10 +6,16 @@ ColumnLayout
 {
     id: columnLayout
 
+    ListModel
+    {
+        id: comboBoxModel
+    }
+
     ComboBox
     {
         id: selectExpenseTrackerComboBox
         objectName: "selectExpenseTrackerComboBox"
+        model: comboBoxModel
     }
 
     RowLayout

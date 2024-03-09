@@ -16,6 +16,7 @@ VisualizeRegisterExpenseTracker::VisualizeRegisterExpenseTracker(
 
 void VisualizeRegisterExpenseTracker::recievedSignal(model::operation::signal::AddExpenseTracker signal)
 {
+  std::cout << "VisualizeRegisterExpenseTracker::recievedSignal" << std::endl;
   mController->expenseTrackerRegistered(signal.getIdExpenseTracker(), signal.getNameExpenseTracker());
 }
 

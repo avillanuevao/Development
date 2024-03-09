@@ -30,33 +30,29 @@ void VisualizeRegisterExpenseTracker::addItemsToComboBox(const QString& item)
       QObject* comboBoxQML = rootObject->findChild<QObject*>("selectExpenseTrackerComboBox", Qt::FindChildrenRecursively);
       if (comboBoxQML)
       {
-        // Obtener el modelo del ComboBox
-        QVariant modelVariant = comboBoxQML->property("model");
-        if (modelVariant.canConvert<QStandardItemModel*>())
-        {
-          QStandardItemModel* model = qvariant_cast<QStandardItemModel*>(modelVariant);
+        // Obtiene el modelo actual del QComboBox
+        QVariant currentModel = comboBoxQML->property("model");
+        QStringList listaColores;
 
-          // Agregar el elemento al modelo
-          model->appendRow(new QStandardItem(item));
+        // Si el modelo actual es una lista, agrégale elementos
+        if (currentModel.canConvert<QStringList>())
+        {
+          listaColores = currentModel.value<QStringList>();
+          listaColores << item; // Agrega el nuevo elemento
         }
         else
         {
-          std::cerr << "Error: Unable to convert model property to QStandardItemModel*." << std::endl;
+          // Si no hay un modelo actual, crea uno nuevo
+          listaColores << item;
         }
-      }
-      else
-      {
-        std::cerr << "Error: Unable to find QML object with id 'comboBoxObject'." << std::endl;
+
+        // Establece el modelo actualizado en el QComboBox
+        comboBoxQML->setProperty("model", QVariant::fromValue(listaColores));
+
+        // Actualiza la interfaz gráfica
+        rootWindow->update();
       }
     }
-    else
-    {
-      std::cerr << "Error: Root object is not a QQuickWindow." << std::endl;
-    }
-  }
-  else
-  {
-    std::cerr << "Error: No root objects found." << std::endl;
   }
 }
 
