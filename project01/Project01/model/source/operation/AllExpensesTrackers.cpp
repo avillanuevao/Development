@@ -44,6 +44,9 @@ int AllExpensesTrackers::getUserAmount(int idUser, int idExpenseTracker)
 void AllExpensesTrackers::setExpenseTrackerSelected(int idExpenseTracker)
 {
   mActualExpenseTrackerSelected = mAllExpenses[idExpenseTracker];
+
+  model::operation::signal::ShowUsersOfExpenseTracker signal(idExpenseTracker);
+  utils::designPattern::SignalPublisher<model::operation::signal::ShowUsersOfExpenseTracker>::notifySubscribers(signal);
 }
 
 }  // namespace operation

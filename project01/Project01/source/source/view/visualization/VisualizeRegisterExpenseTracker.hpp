@@ -28,7 +28,7 @@ class VisualizeRegisterExpenseTracker :
     void expenseTrackerRegistered(int idExpenseTracker, std::string nameExpenseTracker);
 
   public slots:
-    void addItemsToComboBox(const QString& item);
+    void addItemsToComboBox(const QString& name, const int& id);
 
   private:
     QQmlApplicationEngine& mEngine;

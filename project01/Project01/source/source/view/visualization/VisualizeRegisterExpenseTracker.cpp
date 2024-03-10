@@ -15,10 +15,10 @@ VisualizeRegisterExpenseTracker::VisualizeRegisterExpenseTracker(QQmlApplication
 
 void VisualizeRegisterExpenseTracker::expenseTrackerRegistered(int idExpenseTracker, std::string nameExpenseTracker)
 {
-  addItemsToComboBox(QString::fromStdString(nameExpenseTracker));
+  addItemsToComboBox(QString::fromStdString(nameExpenseTracker), idExpenseTracker);
 }
 
-void VisualizeRegisterExpenseTracker::addItemsToComboBox(const QString& item)
+void VisualizeRegisterExpenseTracker::addItemsToComboBox(const QString& item, const int& id)
 {
   if (!mEngine.rootObjects().isEmpty())
   {
@@ -30,28 +30,26 @@ void VisualizeRegisterExpenseTracker::addItemsToComboBox(const QString& item)
       QObject* comboBoxQML = rootObject->findChild<QObject*>("selectExpenseTrackerComboBox", Qt::FindChildrenRecursively);
       if (comboBoxQML)
       {
-        // Obtiene el modelo actual del QComboBox
         QVariant currentModel = comboBoxQML->property("model");
-        QStringList listaColores;
+        QStringList listElements;
 
-        // Si el modelo actual es una lista, agrégale elementos
         if (currentModel.canConvert<QStringList>())
         {
-          listaColores = currentModel.value<QStringList>();
-          listaColores << item; // Agrega el nuevo elemento
+          listElements = currentModel.value<QStringList>();
+          listElements << item;
         }
         else
         {
-          // Si no hay un modelo actual, crea uno nuevo
-          listaColores << item;
+          listElements << item;
         }
 
-        // Establece el modelo actualizado en el QComboBox
-        comboBoxQML->setProperty("model", QVariant::fromValue(listaColores));
+        comboBoxQML->setProperty("model", QVariant::fromValue(listElements));
 
-        // Actualiza la interfaz gráfica
         rootWindow->update();
       }
+      QVariantMap expenseTrackerMap = rootWindow->property("expenseTrackerMap").toMap();
+      expenseTrackerMap.insert(item, id);
+      rootWindow->setProperty("expenseTrackerMap", expenseTrackerMap);
     }
   }
 }

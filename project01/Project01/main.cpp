@@ -43,7 +43,9 @@ int main(int argc, char *argv[])
   std::shared_ptr<source::includeView::visualization::VisualizeRegisterExpenseTracker> includeViewVisualizeRegisterExpenseTracker =
       std::make_shared<source::includeView::visualization::VisualizeRegisterExpenseTracker>(controllerVisualizeRegisterExpenseTracker);
 
-  allExpensesTrackersPtr->addSubscriber(includeViewVisualizeRegisterExpenseTracker);
+  allExpensesTrackersPtr->
+      utils::designPattern::SignalPublisher<model::operation::signal::AddExpenseTracker>::addSubscriber(
+        includeViewVisualizeRegisterExpenseTracker);
 
   engine.rootContext()->setContextProperty("viewRegisterUser", viewRegisterUser.get());
   engine.rootContext()->setContextProperty("viewRegisterExpenseTracker", viewRegisterExpenseTracker.get());

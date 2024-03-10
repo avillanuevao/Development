@@ -16,12 +16,12 @@ class VisualizeRegisterExpenseTracker
 {
   public:
     VisualizeRegisterExpenseTracker(
-        std::shared_ptr<source::view::visualization::VisualizeRegisterExpenseTracker> visualize);
+        std::shared_ptr<source::view::visualization::VisualizeRegisterExpenseTracker> view);
 
     void expenseTrackerRegistered(int idExpenseTracker, std::string nameExpenseTracker);
 
   private:
-    std::shared_ptr<source::view::visualization::VisualizeRegisterExpenseTracker> mVisualize;
+    std::shared_ptr<source::view::visualization::VisualizeRegisterExpenseTracker> mView;
 };
 
 }  // namespace visualization

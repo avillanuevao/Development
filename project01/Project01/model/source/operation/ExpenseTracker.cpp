@@ -34,6 +34,18 @@ int ExpenseTracker::getExpenseId() const
   return mId;
 }
 
+std::vector<int> ExpenseTracker::getUsersId() const
+{
+  std::vector<int> idUsers;
+
+  for (const auto& pair : mExpenseTracker)
+  {
+    idUsers.push_back(pair.first);
+  }
+
+  return idUsers;
+}
+
 int ExpenseTracker::getUserAmount(int idUser)
 {
   return mExpenseTracker[idUser];

@@ -9,9 +9,9 @@ Window {
     visible: true
     title: qsTr("Expense Tracker")
 
-    ListModel
+    property var expenseTrackerMap:
     {
-        id: userDataModel
+
     }
 
     ColumnLayout

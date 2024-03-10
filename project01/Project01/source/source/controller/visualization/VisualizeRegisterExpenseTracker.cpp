@@ -8,15 +8,15 @@ namespace visualization
 {
 
 VisualizeRegisterExpenseTracker::VisualizeRegisterExpenseTracker(
-    std::shared_ptr<view::visualization::VisualizeRegisterExpenseTracker> visualize) :
-  mVisualize(visualize)
+    std::shared_ptr<view::visualization::VisualizeRegisterExpenseTracker> view) :
+  mView(view)
 {
 
 }
 
 void VisualizeRegisterExpenseTracker::expenseTrackerRegistered(int idExpenseTracker, std::string nameExpenseTracker)
 {
-  mVisualize->expenseTrackerRegistered(idExpenseTracker, nameExpenseTracker);
+  mView->expenseTrackerRegistered(idExpenseTracker, nameExpenseTracker);
 }
 
 }  // namespace visualization

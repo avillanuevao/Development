@@ -3,6 +3,7 @@
 
 #include <map>
 #include <memory>
+#include <vector>
 
 #include <operation/iExpenseTracker.hpp>
 
@@ -20,6 +21,7 @@ class ExpenseTracker :
     void addUser(int idUser) override;
     void registerExpenseByUser(int idUser, int amount) override;
     int getExpenseId() const override;
+    std::vector<int> getUsersId() const override;
     int getUserAmount(int idUser) override;
 
   private:
