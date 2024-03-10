@@ -16,6 +16,10 @@
 #include <source/source/controller/visualization/VisualizeRegisterExpenseTracker.hpp>
 #include <source/source/view/visualization/VisualizeRegisterExpenseTracker.hpp>
 
+#include <source/source/includeView/visualization/ShowAvailableUsersInclude.hpp>
+#include <source/source/controller/visualization/ShowAvailableUsers.hpp>
+#include <source/source/controller/visualization/ShowAvailableUsers.hpp>
+
 
 
 int main(int argc, char *argv[])
@@ -28,6 +32,8 @@ int main(int argc, char *argv[])
 
   std::shared_ptr<source::view::visualization::VisualizeRegisterExpenseTracker> viewVisualizeRegisterExpenseTracker =
       std::make_shared<source::view::visualization::VisualizeRegisterExpenseTracker>(engine);
+  std::shared_ptr<source::view::visualization::ShowAvailableUsers> viewShowAvailableUsers =
+      std::make_shared<source::view::visualization::ShowAvailableUsers>(allUsersPtr, engine);
 
   std::shared_ptr<source::controller::operation::RegisterUser> controllerRegisterUser =
       std::make_shared<source::controller::operation::RegisterUser>(allUsersPtr);
@@ -35,6 +41,8 @@ int main(int argc, char *argv[])
       std::make_shared<source::controller::operation::RegisterExpenseTracker>(allExpensesTrackersPtr);
   std::shared_ptr<source::controller::visualization::VisualizeRegisterExpenseTracker> controllerVisualizeRegisterExpenseTracker =
       std::make_shared<source::controller::visualization::VisualizeRegisterExpenseTracker>(viewVisualizeRegisterExpenseTracker);
+  std::shared_ptr<source::controller::visualization::ShowAvailableUsers> controllerShowAvailableUsers =
+      std::make_shared<source::controller::visualization::ShowAvailableUsers>(viewShowAvailableUsers);
 
   std::shared_ptr<source::view::operation::RegisterUser> viewRegisterUser =
       std::make_shared<source::view::operation::RegisterUser>(controllerRegisterUser);
@@ -42,10 +50,14 @@ int main(int argc, char *argv[])
       std::make_shared<source::view::operation::RegisterExpenseTracker>(controllerRegisterExpenseTracker);
   std::shared_ptr<source::includeView::visualization::VisualizeRegisterExpenseTracker> includeViewVisualizeRegisterExpenseTracker =
       std::make_shared<source::includeView::visualization::VisualizeRegisterExpenseTracker>(controllerVisualizeRegisterExpenseTracker);
+  std::shared_ptr<source::includeView::visualization::ShowAvailableUsersInclude> includeViewShowAvailableUsers =
+      std::make_shared<source::includeView::visualization::ShowAvailableUsersInclude>(controllerShowAvailableUsers);
 
   allExpensesTrackersPtr->
       utils::designPattern::SignalPublisher<model::operation::signal::AddExpenseTracker>::addSubscriber(
         includeViewVisualizeRegisterExpenseTracker);
+  allUsersPtr->utils::designPattern::SignalPublisher<model::operation::signal::UserAdded>::addSubscriber(
+        includeViewShowAvailableUsers);
 
   engine.rootContext()->setContextProperty("viewRegisterUser", viewRegisterUser.get());
   engine.rootContext()->setContextProperty("viewRegisterExpenseTracker", viewRegisterExpenseTracker.get());

@@ -5,13 +5,16 @@
 #include <memory>
 
 #include <operation/User.hpp>
+#include <designPattern/SignalPublisher.hpp>
+#include <operation/signal/UserAdded.hpp>
 
 namespace model
 {
 namespace operation
 {
 
-class iAllUsers
+class iAllUsers :
+    public utils::designPattern::SignalPublisher<model::operation::signal::UserAdded>
 {
   public:
     iAllUsers() = default;

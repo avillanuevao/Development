@@ -6,11 +6,6 @@ ColumnLayout
 {
     id: columnLayout
 
-    ListModel
-    {
-        id: comboBoxUserModel
-    }
-
     RowLayout
     {
         id: rowLayout
@@ -19,7 +14,6 @@ ColumnLayout
         {
             id: selectUserComboBox
             objectName: "selectUserComboBox"
-            model: comboBoxUserModel
         }
     }
 

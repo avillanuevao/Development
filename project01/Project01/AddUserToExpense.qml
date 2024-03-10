@@ -8,7 +8,8 @@ ColumnLayout
 
     ComboBox
     {
-        id: selectUserComboBox
+        id: selectUserAvailableComboBox
+        objectName: "selectUserAvailableComboBox"
     }
 
     Button

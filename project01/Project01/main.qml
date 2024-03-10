@@ -14,8 +14,14 @@ Window {
 
     }
 
+    property var userAvailableMap:
+    {
+
+    }
+
     ColumnLayout
     {
+        anchors.centerIn: parent
         RowLayout
         {
             RadioButton
